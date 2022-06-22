@@ -31,6 +31,7 @@ def embed_tile():
                     ),
                     Div(style={"height": "4px"}),
                     Div(
+                        style={"height": "52px"},
                         class_name="px-1",
                         children=[
                             Link(
@@ -39,40 +40,6 @@ def embed_tile():
                                 external=True,
                                 content="$.title",
                             ),
-                        ]
-                    ),
-                    Div(style={"height": "8px"}),
-                    Div(
-                        class_name="px-1",
-                        children=[
-                            Row(
-                                children=[
-                                    Col(
-                                        class_name="col-6",
-                                        children=[
-                                            Span("$.channel_name", "font-small-3")
-                                        ]
-                                    ),
-                                    Col(
-                                        class_name="col-6",
-                                        children=[
-                                            Icon(
-                                                "users",
-                                                size='sm',
-                                                style={
-                                                    "marginRight": "6px"
-                                                }
-                                            ),
-                                            Span(
-                                                format_template(
-                                                    "{{ subscribers_count }} subs",
-                                                    {"subscribers_count": "$.subscribers_count"}
-                                                )
-                                                , "font-small-2")
-                                        ]
-                                    )
-                                ]
-                            )
                         ]
                     ),
                     Div(style={"height": "8px"}),
