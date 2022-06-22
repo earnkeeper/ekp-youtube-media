@@ -16,6 +16,10 @@ class AppContainer(BaseContainer):
 
         # DB
 
+        self.game_repo = GameRepo(
+            mg_client=self.mg_client
+        )        
+        
         self.youtube_repo = YoutubeRepo(
             mg_client=self.mg_client
         )
@@ -23,6 +27,7 @@ class AppContainer(BaseContainer):
         # FEATURES - EMBEDS
 
         self.embeds_service = EmbedsService(
+            game_repo=self.game_repo,
             youtube_repo=self.youtube_repo
         )
 

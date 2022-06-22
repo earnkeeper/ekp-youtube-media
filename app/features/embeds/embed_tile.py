@@ -20,17 +20,18 @@ def embed_tile():
                         ]
                     ),
                     Div(
+                        class_name="px-1",
                         children=[
                             Link(
-                                class_name="pl-1 pr-2",
                                 href="$.page",
-                                content="$.search_query",
+                                content="$.game_name",
                                 external_icon=True
                             ),
                         ]
                     ),
+                    Div(style={"height": "4px"}),
                     Div(
-                        class_name="pl-1 pr-2",
+                        class_name="px-1",
                         children=[
                             Link(
                                 class_name="font-small-3",
@@ -40,26 +41,20 @@ def embed_tile():
                             ),
                         ]
                     ),
+                    Div(style={"height": "8px"}),
                     Div(
-                        class_name="ml-1 mr-2 mt-1",
+                        class_name="px-1",
                         children=[
                             Row(
                                 children=[
                                     Col(
-                                        class_name="col-auto",
+                                        class_name="col-6",
                                         children=[
-                                            # Icon(
-                                            #     "user",
-                                            #     size='sm',
-                                            #     style={
-                                            #         "marginRight": "6px"
-                                            #     }
-                                            # ),
                                             Span("$.channel_name", "font-small-3")
                                         ]
                                     ),
                                     Col(
-                                        class_name="col-auto",
+                                        class_name="col-6",
                                         children=[
                                             Icon(
                                                 "users",
@@ -80,13 +75,14 @@ def embed_tile():
                             )
                         ]
                     ),
+                    Div(style={"height": "8px"}),
                     Div(
-                        class_name="ml-1 mr-2 mt-1",
+                        class_name="px-1",
                         children=[
                             Row(
                                 children=[
                                     Col(
-                                        class_name="col-auto",
+                                        class_name="col-6",
                                         children=[
                                             Icon(
                                                 "calendar",
@@ -99,7 +95,7 @@ def embed_tile():
                                         ]
                                     ),
                                     Col(
-                                        class_name="col-auto",
+                                        class_name="col-6",
                                         children=[
                                             Icon(
                                                 "eye",
