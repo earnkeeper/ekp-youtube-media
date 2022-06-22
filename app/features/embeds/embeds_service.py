@@ -16,7 +16,8 @@ class EmbedsService:
         self.youtube_repo = youtube_repo
 
     async def get_embeds(self):
-        videos = self.youtube_repo.list_videos_ordered_by_publish_time()
+        videos = self.youtube_repo.list_videos_ordered_by_publish_time(100)
+        
         games = self.game_repo.find_all()
         
         games_map = {}
@@ -28,11 +29,18 @@ class EmbedsService:
         embeds = []
 
         for video in videos:
-            rank += 1
             
             game_id = video["game_id"]
             
+            if game_id not in games_map:
+                continue
+            
             game = games_map[game_id]
+            
+            if game['disable']:
+                continue
+            
+            rank += 1
             
             video["rank"] = rank
             
@@ -52,5 +60,8 @@ class EmbedsService:
             }
 
             embeds.append(embed)
+            
+            if rank == 10:
+                break
 
         return embeds

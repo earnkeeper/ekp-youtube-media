@@ -18,12 +18,14 @@ class YoutubeRepo:
     def find_all(self):
         return list(self.collection.find())
 
-    def list_videos_ordered_by_publish_time(self):
+    def list_videos_ordered_by_publish_time(self, limit):
         results = list(
-            self.collection.find({},
-                                 {"_id": False}).
-                limit(10).
-                sort(
+            self.collection.find(
+                {},
+                {"_id": False}
+            ).
+            limit(limit).
+            sort(
                 "publish_time", -1
             )
         )
@@ -36,7 +38,7 @@ class YoutubeRepo:
     def find_game_ids_with_videos_today(self, midnight):
         results = list(
             self.collection
-                .aggregate([
+            .aggregate([
                 {
                     "$match": {
                         "date_timestamp": midnight,
@@ -53,9 +55,6 @@ class YoutubeRepo:
 
         if not len(results):
             return []
-
-        # [{"_id": "metabomb"}, {"_id": "mines-of-dalarnia"}]
-        # ["metabomb", "mines-of-dalarnia"]
 
         return list(
             map(
@@ -76,14 +75,14 @@ class YoutubeRepo:
     def find_videos_by_game_id(self, game_id):
         results = list(
             self.collection
-                .find(
+            .find(
                 {
                     "game_id": game_id
                 },
                 {
                     "_id": False
                 })
-                .limit(10)
+            .limit(10)
         )
 
         if not len(results):
@@ -95,7 +94,9 @@ class YoutubeRepo:
         start = time.perf_counter()
 
         self.collection.bulk_write(
-            list(map(lambda video: UpdateOne({"id": video["id"]}, {"$set": video}, True), videos))
+            list(map(lambda video: UpdateOne(
+                {"id": video["id"]}, {"$set": video}, True), videos))
         )
 
-        print(f"⏱  [YoutubeRepo.save({len(videos)})] {time.perf_counter() - start:0.3f}s")
+        print(
+            f"⏱  [YoutubeRepo.save({len(videos)})] {time.perf_counter() - start:0.3f}s")
