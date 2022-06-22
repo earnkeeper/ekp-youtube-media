@@ -1,0 +1,10 @@
+{
+  "id": "youtube-media",
+  "gameId": "all",
+  "name": "Youtube Media",
+  "github": "https://github.com/earnkeeper/ekp-youtube-media",
+  "image": "/static/market.avif",
+  "mainPage": "",
+  "description": "",
+  "features": []
+}

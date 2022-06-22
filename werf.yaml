@@ -1,0 +1,6 @@
+configVersion: 1
+project: youtube-media
+---
+image: app
+dockerfile: Dockerfile.app
+context: .
