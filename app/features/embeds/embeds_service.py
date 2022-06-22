@@ -38,6 +38,10 @@ class EmbedsService:
             
             video["game_name"] = game['name']
 
+            if len(video["title"]) > 45:
+                video["title"] = video["title"][:42] + "..."
+
+
             video["page"] = f'/game/all/info/{video["game_id"]}'
 
             embed = {
